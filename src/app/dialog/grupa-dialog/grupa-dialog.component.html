@@ -1,1 +1,66 @@
-<p>grupa-dialog works!</p>
+<div class="container">
+  <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje grupe</h3>
+  <h3 mat-dialog-title *ngIf="flag == 2">Modifikacija grupe: {{ data.id }}</h3>
+  <h3 mat-dialog-title *ngIf="flag == 3">Brisanje grupe: {{ data.id }}</h3>
+  <form class="mat-dialog-content" #formControl="ngForm">
+    <div class="form">
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Oznaka"
+          [(ngModel)]="data.oznaka"
+          name="oznaka"
+          [disabled]="flag == 3"
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field>
+        <mat-select
+          [(ngModel)]="data.smer"
+          placeholder="Smer"
+          name="smer"
+          [compareWith]="compareTo"
+          [disabled]="flag == 3"
+        >
+          <mat-option *ngFor="let smer of smerovi" [value]="smer">{{
+            smer.naziv
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button
+        mat-button
+        *ngIf="flag == 1"
+        type="submit"
+        [mat-dialog-close]="1"
+        (click)="add()"
+        [disabled]="!formControl.valid"
+      >
+        Sacuvaj
+      </button>
+      <button
+        mat-button
+        *ngIf="flag == 2"
+        type="submit"
+        [mat-dialog-close]="1"
+        (click)="update()"
+        [disabled]="!formControl.valid"
+      >
+        Sacuvaj
+      </button>
+      <button
+        mat-button
+        *ngIf="flag == 3"
+        type="submit"
+        [mat-dialog-close]="1"
+        (click)="delete()"
+      >
+        Obrisi
+      </button>
+      <button mat-button (click)="cancel()">Ponisti</button>
+    </div>
+  </form>
+</div>
