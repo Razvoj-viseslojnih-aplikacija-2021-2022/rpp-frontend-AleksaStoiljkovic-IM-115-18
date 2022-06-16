@@ -5,12 +5,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { ComponentAboutComponent } from './component-about/component-about.component';
 import { AboutComponent } from './core/about/about.component';
-import { ProjekatDialogComponent } from './projekat-dialog/projekat-dialog.component';
-import { SmerDialogComponent } from './smer-dialog/smer-dialog.component';
-import { GrupaDialogComponent } from './grupa-dialog/grupa-dialog.component';
-import { StudentDialogComponent } from './student-dialog/student-dialog.component';
+import { ProjekatDialogComponent } from './dialog/projekat-dialog/projekat-dialog.component';
+import { SmerDialogComponent } from './dialog/smer-dialog/smer-dialog.component';
+import { GrupaDialogComponent } from './dialog/grupa-dialog/grupa-dialog.component';
+import { StudentDialogComponent } from './dialog/student-dialog/student-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
 import { SmerComponent } from './smer/smer.component';
 import { ProjekatComponent } from './projekat/projekat.component';
@@ -40,10 +39,18 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { GrupaService } from './service/grupa.service';
 
+const Routes = [{path: 'smer', component: SmerComponent},
+                {path: 'grupa', component: GrupaComponent},
+                {path: 'projekat', component: ProjekatComponent},
+                {path: 'student', component: StudentComponent},
+                {path: 'home', component: HomeComponent},
+                {path: 'author', component: AuthorComponent},
+                {path: 'about', component: AboutComponent},
+                {path: '', redirectTo: 'home', pathMatch: 'full'}];
+
 @NgModule({
   declarations: [
     AppComponent,
-    ComponentAboutComponent,
     AboutComponent,
     ProjekatDialogComponent,
     SmerDialogComponent,
