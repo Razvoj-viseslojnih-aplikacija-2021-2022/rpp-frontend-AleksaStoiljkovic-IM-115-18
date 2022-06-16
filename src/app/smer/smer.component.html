@@ -16,12 +16,14 @@
     </ng-container>
 
     <ng-container matColumnDef="naziv">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Naziv</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.naziv }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="oznaka">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header
+        >Oznaka</mat-header-cell
+      >
       <mat-cell *matCellDef="let row">{{ row.oznaka }}</mat-cell>
     </ng-container>
 
