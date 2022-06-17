@@ -8,6 +8,7 @@ import { Projekat } from '../model/projekat.model';
 import { Student } from '../model/student.model';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentDialogComponent } from '../dialog/student-dialog/student-dialog.component';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-student',
@@ -41,7 +42,7 @@ export class StudentComponent implements OnInit {
   }
 
   public loadData() {
-    //this.dataSource = this.studentService.getAllStudent(this.selektovanaGrupa.id);
+    //this.dataSource = this.studentService.getAllStudent();
     this.studentService.getAllStudent().subscribe( data => {
       this.dataSource = new MatTableDataSource(data);
 

@@ -33,7 +33,7 @@ export class SmerComponent implements OnInit {
   }
 
   public loadData() {
-    //this.dataSource = this.smerService.getAllArtikl();
+    //this.dataSource = this.smerService.getAllSmer();
     this.smerService.getAllSmer().subscribe( data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sortingDataAccessor = (data:any, property) => {

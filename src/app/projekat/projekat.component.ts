@@ -67,4 +67,3 @@ applyFilter(filterValue: string) {
 
 
 }
-
