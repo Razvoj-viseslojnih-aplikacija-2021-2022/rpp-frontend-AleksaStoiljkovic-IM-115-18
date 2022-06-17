@@ -40,14 +40,14 @@
       <mat-cell *matCellDef="let row">
         <button
           mat-icon-button
-          collor="primary"
+          color="primary"
           (click)="openDialog(2, row.id, row.naziv, row.oznaka)"
         >
-          <mat-icon arial label="Edit">Edit</mat-icon>
+          <mat-icon arial-label="Edit">edit</mat-icon>
         </button>
         <button
           mat-icon-button
-          collor="primary"
+          color="primary"
           (click)="openDialog(3, row.id, row.naziv, row.oznaka)"
         >
           <mat-icon arial label="Delete">delete</mat-icon>
