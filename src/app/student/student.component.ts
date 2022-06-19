@@ -17,13 +17,12 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class StudentComponent implements OnInit {
 
-  displayedColumns = ['id', 'ime', 'prezime', 'broj_indeksa', 'grupa', 'projekat', 'actions'];
+  displayedColumns = ['id', 'ime', 'prezime', 'brojIndeksa', 'grupa', 'projekat', 'actions'];
 
   grupa!: Grupa;
 
   projekat!: Projekat;
 
-  //dataSource!: Observable<Student[]>;
   dataSource!: MatTableDataSource<Student>;
 
   selektovaniStudent!: Student;
@@ -42,7 +41,6 @@ export class StudentComponent implements OnInit {
   }
 
   public loadData() {
-    //this.dataSource = this.studentService.getAllStudent();
     this.studentService.getAllStudent().subscribe( data => {
       this.dataSource = new MatTableDataSource(data);
 
@@ -61,7 +59,7 @@ export class StudentComponent implements OnInit {
           case 'id': return data[property];
           case 'ime': return data[property];
           case 'prezime': return data[property];
-          case 'broj_indeksa': return data[property];
+          case 'brojIndeksa': return data[property];
           case 'grupa': return data.grupa.naziv;
           case 'projekat': return data.projekat.naziv;
           default: return data[property].toLocaleLowerCase();
@@ -72,8 +70,8 @@ export class StudentComponent implements OnInit {
     });
   }
 
-  public openDialog(flag: number, id: number, ime: string, prezime: string, broj_indeksa: string, grupa: Grupa, projekat: Projekat) {
-    const dialog = this.dialog.open(StudentDialogComponent, {data: {id: id, ime: ime, prezime: prezime, broj_indeksa: broj_indeksa, grupa: Grupa, projekat: Projekat}});
+  public openDialog(flag: number, id: number, ime: string, prezime: string, brojIndeksa: string, grupa: Grupa, projekat: Projekat) {
+    const dialog = this.dialog.open(StudentDialogComponent, {data: {id: id, ime: ime, prezime: prezime, broj_indeksa: brojIndeksa, grupa: Grupa, projekat: Projekat}});
     dialog.componentInstance.flag = flag;
     dialog.afterClosed().subscribe(result => {
       if (result === 1) {
