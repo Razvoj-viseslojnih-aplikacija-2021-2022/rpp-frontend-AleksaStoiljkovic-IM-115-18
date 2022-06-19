@@ -30,7 +30,7 @@ export class ProjekatService {
     }
 
     public updateProjekat(projekat: Projekat): void {
-        this.httpClient.put(this.API_URL, projekat).subscribe();
+        this.httpClient.put(this.API_URL + projekat.id, projekat).subscribe();
     }
 
     public deleteProjekat(id: number): void {

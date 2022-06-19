@@ -17,7 +17,6 @@ export class ProjekatComponent implements OnInit {
 
   displayedColumns = ['id', 'naziv', 'oznaka', 'opis', 'actions'];
 
-  //dataSource!: Observable<Projekat[]>;
   dataSource!: MatTableDataSource<Projekat>;
 
   @ViewChild(MatPaginator)
@@ -34,7 +33,6 @@ export class ProjekatComponent implements OnInit {
   }
 
   public loadData() {
-    //this.dataSource = this.projekatService.getAllProjekat();
     this.projekatService.getAllProjekat().subscribe( data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sortingDataAccessor = (data: any, property) => {

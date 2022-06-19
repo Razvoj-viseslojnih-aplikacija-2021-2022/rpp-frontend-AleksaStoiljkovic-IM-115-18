@@ -23,7 +23,6 @@ export class GrupaComponent implements OnInit {
 
   smer!: Smer;
 
-  //dataSource!: Observable<Grupa[]>;
   dataSource!: MatTableDataSource<Grupa>;
 
   selektovanaGrupa!: Grupa;
@@ -42,7 +41,6 @@ export class GrupaComponent implements OnInit {
   }
 
   public loadData() {
-    //this.dataSource = this.grupaService.getAllGrupa();
     this.grupaService.getAllGrupa().subscribe( data => {
       this.dataSource = new MatTableDataSource(data);
 
