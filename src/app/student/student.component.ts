@@ -19,19 +19,22 @@ export class StudentComponent implements OnInit {
 
   displayedColumns = ['id', 'ime', 'prezime', 'brojIndeksa', 'grupa', 'projekat', 'actions'];
 
+  dataSource!: MatTableDataSource<Student>;
+
   grupa!: Grupa;
 
   projekat!: Projekat;
-
-  dataSource!: MatTableDataSource<Student>;
-
-  selektovaniStudent!: Student;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
   @ViewChild(MatSort)
   sort!: MatSort;
+
+  @Input()
+  selektovanaGrupa!: Grupa;
+
+  selektovaniStudent!: Student;
 
   constructor(public studentService: StudentService,
     public dialog: MatDialog) { }
@@ -40,14 +43,20 @@ export class StudentComponent implements OnInit {
     this.loadData();
   }
 
+  ngOnChanges(): void {
+    if (this.selektovanaGrupa.id) {
+      this.loadData();
+    }
+  }
+
   public loadData() {
-    this.studentService.getAllStudent().subscribe( data => {
+    this.studentService.getAllStudentiGrupe(this.selektovanaGrupa.id).subscribe( data => {
       this.dataSource = new MatTableDataSource(data);
 
       //pretraga po nazivu stranog kljuca
       this.dataSource.filterPredicate = (data: any, filter: string) => {
         const acumulator = (currentTerm: string, key: string) => {
-          return key === 'grupa' ? currentTerm + data.grupa.naziv : currentTerm + data[key];
+          return key === 'projekat' ? currentTerm + data.projekat.naziv : currentTerm + data[key];
         };
         const dataStr = Object.keys(data).reduce(acumulator, '').toLowerCase();
         const transformedFilter = filter.trim().toLowerCase();

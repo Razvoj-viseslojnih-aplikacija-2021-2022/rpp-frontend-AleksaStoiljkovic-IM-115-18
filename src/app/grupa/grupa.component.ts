@@ -9,6 +9,7 @@ import { GrupaDialogComponent } from '../dialog/grupa-dialog/grupa-dialog.compon
 import { Grupa } from '../model/grupa.model';
 import { SmerService } from '../service/smer.service';
 import { MatSort } from '@angular/material/sort';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-grupa',
@@ -16,8 +17,6 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./grupa.component.css']
 })
 export class GrupaComponent implements OnInit {
-
-  
 
   displayedColumns = ['id', 'oznaka', 'smer', 'actions'];
 
@@ -68,7 +67,7 @@ export class GrupaComponent implements OnInit {
   }
 
   public openDialog(flag: number, id: number, oznaka: string, smer: Smer) {
-    const dialog = this.dialog.open(GrupaDialogComponent, {data: {id: id, oznaka: oznaka, smer: Smer}});
+    const dialog = this.dialog.open(GrupaDialogComponent, {data: {id: id, oznaka: oznaka, smer: smer}});
     dialog.componentInstance.flag = flag;
     dialog.afterClosed().subscribe(result => {
       if (result === 1) {

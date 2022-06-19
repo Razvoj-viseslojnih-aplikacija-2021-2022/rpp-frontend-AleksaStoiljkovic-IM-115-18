@@ -73,3 +73,9 @@
     [showFirstLastButtons]="true"
   ></mat-paginator>
 </div>
+<div class="container mat-elevation-z8">
+  <app-student
+    *ngIf="selektovanaGrupa"
+    [selektovanaGrupa]="selektovanaGrupa"
+  ></app-student>
+</div>

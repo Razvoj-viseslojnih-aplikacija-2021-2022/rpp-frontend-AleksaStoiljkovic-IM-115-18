@@ -8,6 +8,8 @@ import { Observable } from 'rxjs/internal/Observable';
 export class StudentService {
     private readonly API_URL = 'http://localhost:8082/student/';
 
+    private readonly API_URL_G = 'http://localhost:8082/studentiGrupe/';
+
     dataChange: BehaviorSubject<Student[]> = new BehaviorSubject<Student[]>([]);
 
     constructor(private httpClient: HttpClient) {}
@@ -21,7 +23,19 @@ export class StudentService {
                 console.log(error.name + ' ' + error.message);
             }
         );
-        return this. dataChange.asObservable();
+        return this.dataChange.asObservable();
+    }
+
+    public getAllStudentiGrupe(idGrupe: number): Observable<Student[]> {
+        this.httpClient.get<Student[]>(this.API_URL_G + idGrupe).subscribe(
+            (data) => {
+                this.dataChange.next(data);
+            },
+            (error: HttpErrorResponse) => {
+                console.log(error.name + ' ' + error.message);
+            }
+        );
+        return this.dataChange.asObservable();
     }
 
     public addStudent(student: Student): void {
