@@ -16,7 +16,6 @@ export class SmerComponent implements OnInit {
 
   displayedColumns = ['id', 'naziv', 'oznaka', 'actions'];
 
-  //dataSource!: Observable<Smer[]>;
   dataSource!: MatTableDataSource<Smer>;
 
   @ViewChild(MatPaginator)
@@ -33,7 +32,6 @@ export class SmerComponent implements OnInit {
   }
 
   public loadData() {
-    //this.dataSource = this.smerService.getAllSmer();
     this.smerService.getAllSmer().subscribe( data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sortingDataAccessor = (data:any, property) => {
