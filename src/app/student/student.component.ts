@@ -17,7 +17,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class StudentComponent implements OnInit {
 
-  displayedColumns = ['id', 'ime', 'prezime', 'brojIndeksa', 'grupa', 'projekat', 'actions'];
+  displayedColumns = ['id', 'ime', 'prezime', 'brojIndeksa', 'projekat', 'actions'];
 
   dataSource!: MatTableDataSource<Student>;
 
